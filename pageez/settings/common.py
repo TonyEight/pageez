@@ -1,34 +1,31 @@
-"""
-Django settings for pageez project.
-
-For more information on this file, see
-https://docs.djangoproject.com/en/1.7/topics/settings/
-
-For the full list of settings and their values, see
-https://docs.djangoproject.com/en/1.7/ref/settings/
-"""
-
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+# -*- coding: utf-8 -*-
+# Built-in modules
+import tempfile
 import os
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+import sys
 
+# Project directory definition.
+FS_ENCODING = sys.getfilesystemencoding()
+THIS_FILE = __file__.decode(FS_ENCODING)
+SETTINGS_DIR = os.path.dirname(os.path.realpath(os.path.abspath(THIS_FILE)))
+PROJECT_DIR = os.path.dirname(os.path.realpath(SETTINGS_DIR))
+ROOT_DIR = os.path.dirname(os.path.realpath(PROJECT_DIR))
+APPS_DIR = os.path.join(ROOT_DIR, 'apps')
+TEMP_DIR = tempfile.gettempdir().decode(FS_ENCODING)
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
+# Adds the apps to the pythonpath
+sys.path.append(APPS_DIR)
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '&)zjw2024o_o#zo$zk*rg-v!x3^ii-y_7=&!6a$_y)*m4m+g%*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
 TEMPLATE_DEBUG = True
-
 ALLOWED_HOSTS = []
 
 
 # Application definition
-
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
